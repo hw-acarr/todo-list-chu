@@ -14,7 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="host.json" />
-    <None Remove="Index.html" />
+    <None Remove="index.html" />
     <None Remove="proxies.json" />
   </ItemGroup>
   <ItemGroup>
@@ -67,7 +67,7 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
     </None>
-    <None Update="www\jquery\Index.html">
+    <None Update="www\jquery\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="www\jquery\Update.html">

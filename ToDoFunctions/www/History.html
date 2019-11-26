@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>ToDo History</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body style="background-color: gainsboro">
     <div class="container">
         <div class="jumbotron" style="background-color: white">
@@ -14,23 +17,27 @@
                 This web app uses a serverless technology called Azure Functions to serve up HTML pages to you.
                 <br />
                 <br />
-                <a class="btn btn-primary btn-group-sm" href="https://azure.microsoft.com/en-us/services/functions/?&WT.srch=1&WT.mc_id=AID623261_SEM_uJOA6Xlm&gclid=Cj0KCQjwtJzLBRC7ARIsAGMkOAmPEWSay_1JzokjrEhH8dXkKSaGRoiro02_WCjxKNeN4Q35FLi-GPcaAn6GEALw_wcB" role="button">Learn more about Azure Functions</a>
+                <a class="btn btn-primary btn-group-sm"
+                    href="https://azure.microsoft.com/en-us/services/functions/?&WT.srch=1&WT.mc_id=AID623261_SEM_uJOA6Xlm&gclid=Cj0KCQjwtJzLBRC7ARIsAGMkOAmPEWSay_1JzokjrEhH8dXkKSaGRoiro02_WCjxKNeN4Q35FLi-GPcaAn6GEALw_wcB"
+                    role="button">Learn more about Azure Functions</a>
             </p>
         </div>
         <hr />
         <div class="btn-group">
-            <input type="button" class="btn btn-default" onclick="location.href='Create.html';" value="Add A New To Do Item" />
-            <input type="button" class="btn btn-default" onclick="location.href = 'Index.html';" value="View To Do Items" />
+            <input type="button" class="btn btn-default" onclick="location.href='Create.html';"
+                value="Add A New To Do Item" />
+            <input type="button" class="btn btn-default" onclick="location.href = 'index.html';"
+                value="View To Do Items" />
         </div>
         <hr />
     </div>
     <div id="todolist" class="container"></div>
 </body>
+
 </html>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 
 <script id="ToDoPanel" type="text/x-handlebars-template">
