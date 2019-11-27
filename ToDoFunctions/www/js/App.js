@@ -1,4 +1,4 @@
-export default class App extends Component {
+class TitleBar extends Component {
     render() {
         return (
             <div class="jumbotron" style="background-color: white">
@@ -6,4 +6,12 @@ export default class App extends Component {
             </div>
         );
     }
+}
+
+function App() {
+    return (
+        <div>
+            <TitleBar />
+        </div>
+    )
 }
