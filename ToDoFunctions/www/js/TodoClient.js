@@ -1,6 +1,7 @@
 ﻿(function () {
     var TodoClient = function (baseUrl) {
         this.baseUrl = baseUrl || '';
+        Console.log("BASE URL: " + this.baseUrl);
     };
 
     TodoClient.prototype.get = function (id, callback) {
