@@ -20,6 +20,7 @@
 
     TodoClient.prototype.getList = function (includeCompleted, includeActive, callback) {
         var xhr = new XMLHttpRequest();
+        Console.log("Getting: " + this.baseUrl + '/api/todos?includecompleted=' + (includeCompleted === true) + '&includeactive=' + (includeActive === true));
         xhr.open('GET', this.baseUrl + '/api/todos?includecompleted=' + (includeCompleted === true) + '&includeactive=' + (includeActive === true));
         xhr.onload = function () {
             if (xhr.status === 200) {
