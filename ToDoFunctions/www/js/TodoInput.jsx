@@ -6,7 +6,7 @@ class TodoInput extends React.Component {
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         await fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then((data) => {
