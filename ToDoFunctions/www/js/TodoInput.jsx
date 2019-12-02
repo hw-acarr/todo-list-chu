@@ -1,7 +1,7 @@
 class TodoInput extends React.Component {
     constructor(props) {
         super(props);
-        state = {
+        this.state = {
             items: []
         }
     }
