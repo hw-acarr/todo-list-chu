@@ -1,4 +1,21 @@
 class TodoInput extends React.Component {
+    constructor(props) {
+        super(props);
+        state = {
+            items: []
+        }
+    }
+
+    componentDidMount() {
+        fetch('/api/todos?includecompleted=true&includeactive=true')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({ items: data })
+            })
+            .catch(console.log)
+        console.log(this.state.items);
+    }
+
     render() {
         return (
             <div className="container">
