@@ -7,10 +7,11 @@ class TodoInput extends React.Component {
     }
 
     componentDidMount() {
-        fetch('/api/todos?includecompleted=true&includeactive=true')
+        await fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then((data) => {
-                this.setState({ items: data })
+                console.log(data);
+                this.setState({ items: data });
             })
             .catch(console.log)
         console.log(this.state.items);
@@ -21,9 +22,9 @@ class TodoInput extends React.Component {
             <div className="container">
                 <hr />
                 <div className="btn-group">
-                    <input type="button" className="btn btn-default" onclick="location.href='Create.html';"
+                    <input type="button" className="btn btn-default" onClick="location.href='Create.html';"
                         value="Add A New To Do Item" />
-                    <input type="button" className="btn btn-default" onclick="location.href = 'History.html';"
+                    <input type="button" className="btn btn-default" onClick="location.href = 'History.html';"
                         value="View To Do Item History" />
                 </div>
                 <hr />
