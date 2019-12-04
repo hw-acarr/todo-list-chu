@@ -11,10 +11,14 @@ function Counter() {
         <div>
             <p>You clicked {count} times</p>
             <DecrementCount count={count} setCount={setCount} />
-            <button onClick={() => setCount(count + 1)}>
-                Click me
-        </button>
+            <IncrementCount count={count} setCount={setCount} />
         </div>
+    );
+}
+
+function IncrementCount(props) {
+    return (
+        <button onClick={() => props.setCount(props.count + 1)}>+</button>
     );
 }
 
