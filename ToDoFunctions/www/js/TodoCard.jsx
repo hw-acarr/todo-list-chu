@@ -10,7 +10,7 @@ class TodoCard extends React.Component {
                 <div className="panel-heading">
                     <h3 className="panel-title">{this.props.title}</h3>
                 </div>
-                <div class="panel-body">
+                <div className="panel-body">
                     {this.props.description}
                 </div>
             </div>
