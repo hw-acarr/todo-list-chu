@@ -24,25 +24,26 @@ function TodoCardList() {
     const [items, setItems] = React.useState([]);
     const [hasLoaded, setLoadedStatus] = React.useState(false);
 
-    React.useEffect(async () => {
-        await fetch('/api/todos?includecompleted=false&includeactive=true')
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setItems(data);
-                setLoadedStatus(true);
-            })
-            .catch(error => console.log(error));
+    React.useEffect(() => {
+        async function retrieveTasks() {
+            await fetch('/api/todos?includecompleted=false&includeactive=true')
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setItems(data);
+                    setLoadedStatus(true);
+                })
+                .catch(error => console.log(error));
+        }
+        retrieveTasks();
     }, []);
 
     return (
         <div>
-            {hasLoaded && console.log(items)
-
-                //items.map((item, index) => (
-                //  <TodoCard Title={item.title} Description={item.description} />
+            {hasLoaded && items.map((item, index) => (
+                <TodoCard Title={item.title} Description={item.description} />
                 // loop through the tasks and display them now.
-                //))
+            ))
             }
         </div>
     );
