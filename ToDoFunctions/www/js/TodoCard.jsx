@@ -29,7 +29,7 @@ function TodoCardList() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setItems(data.items);
+                setItems(data);
                 setLoadedStatus(true);
             })
             .catch(error => console.log(error));
