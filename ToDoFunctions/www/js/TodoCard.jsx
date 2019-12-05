@@ -37,10 +37,13 @@ function TodoCardList() {
 
     return (
         <div>
-            {hasLoaded && items.map((item, index) => (
-                <TodoCard Title={item.title} Description={item.description} />
+            {hasLoaded && console.log(items)
+
+                //items.map((item, index) => (
+                //  <TodoCard Title={item.title} Description={item.description} />
                 // loop through the tasks and display them now.
-            ))}
+                //))
+            }
         </div>
     );
 }
