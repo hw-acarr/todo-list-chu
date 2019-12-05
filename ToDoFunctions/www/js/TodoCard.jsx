@@ -24,8 +24,8 @@ function TodoCardList() {
     const [items, setItems] = React.useState([]);
     const [hasLoaded, setLoadedStatus] = React.useState(false);
 
-    React.useEffect(() => {
-        fetch('/api/todos?includecompleted=false&includeactive=true')
+    React.useEffect(async () => {
+        await fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -33,7 +33,7 @@ function TodoCardList() {
                 setLoadedStatus(true);
             })
             .catch(error => console.log(error));
-    });
+    }, []);
 
     return (
         <div>
