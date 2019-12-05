@@ -6,14 +6,12 @@ class TodoCard extends React.Component {
 
     render() {
         return (
-            <div clasName="panel-container">
+            <div className="panel-container">
                 <div className="panel-heading">
-                    <h3 className="panel-title">{this.props.Title}</h3>
+                    <h3 className="panel-title">{this.props.title}</h3>
                 </div>
                 <div class="panel-body">
-                    {this.props.Description}
-                    <br />
-
+                    {this.props.description}
                 </div>
             </div>
         )
@@ -41,10 +39,8 @@ function TodoCardList() {
     return (
         <div>
             {hasLoaded && items.map((item, index) => (
-                <TodoCard Title={item.title} Description={item.description} />
-                // loop through the tasks and display them now.
-            ))
-            }
+                <TodoCard key={item.id} title={item.title} description={item.description} />
+            ))}
         </div>
     );
 }
