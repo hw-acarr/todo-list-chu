@@ -22,6 +22,7 @@ class TodoCard extends React.Component {
 
 function TodoCardList() {
     const [items, setItems] = React.useState([]);
+    const [hasLoaded, setLoadedStatus] = React.useState(false);
 
     React.useEffect(() => {
         fetch('/api/todos?includecompleted=false&includeactive=true')
@@ -29,17 +30,17 @@ function TodoCardList() {
             .then(data => {
                 console.log(data);
                 setItems(data.items);
+                setLoadedStatus(true);
             })
             .catch(error => console.log(error));
     });
 
     return (
         <div>
-            {items.map((item, index) => (
+            {hasLoaded && items.map((item, index) => (
                 <TodoCard Title={item.title} Description={item.description} />
                 // loop through the tasks and display them now.
             ))}
-
         </div>
     );
 }
