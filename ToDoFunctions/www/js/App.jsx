@@ -4,7 +4,7 @@ class App extends React.Component {
             <div>
                 <Counter />
                 <TitleBar />
-                <TodoInput />
+                <TodoCardList />
             </div>
         );
     }

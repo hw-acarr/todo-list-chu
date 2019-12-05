@@ -13,9 +13,33 @@ class TodoCard extends React.Component {
                 <div class="panel-body">
                     {this.props.Description}
                     <br />
-                    Due: {this.props.Due}
+
                 </div>
             </div>
         )
     };
+}
+
+function TodoCardList() {
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch('/api/todos?includecompleted=false&includeactive=true')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setItems(data.items);
+            })
+            .catch(error => console.log(error));
+    });
+
+    return (
+        <div>
+            {items.map((item, index) => (
+                <TodoCard Title={item.title} Description={item.description} />
+                // loop through the tasks and display them now.
+            ))}
+
+        </div>
+    );
 }
