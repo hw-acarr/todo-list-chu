@@ -5,14 +5,13 @@ class TodoCard extends React.Component {
     }
 
     render() {
-        var description = marked(this.props.description);
         return (
             <div className="panel-container">
                 <div className="panel-heading">
                     <h3 className="panel-title">{this.props.title}</h3>
                 </div>
                 <div className="panel-body">
-                    {description}
+                    <ReactMarkdown source={this.props.description} />
                 </div>
             </div>
         )
