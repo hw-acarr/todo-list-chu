@@ -11,7 +11,7 @@ class TodoCard extends React.Component {
                     <h3 className="panel-title">{this.props.title}</h3>
                 </div>
                 <div className="panel-body">
-                    {this.props.description}
+                    marked({this.props.description})
                 </div>
             </div>
         )
