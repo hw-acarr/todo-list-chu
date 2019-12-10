@@ -28,7 +28,7 @@ class BasicCard extends React.Component {
         return (
             <div className="taskcard">
                 <BasicTaskDescription item={this.props.item} />
-                <BasicTaskActions />
+                <BasicTaskActions key={this.props.item.id} />
             </div>
         );
     }
@@ -53,15 +53,24 @@ class BasicTaskDescription extends React.Component {
 }
 
 class BasicTaskActions extends React.Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
 
     render() {
         return (
             <div className="task-actions">
-                <button name="modify" type="button"  >Modify</button>
+                <button name="modify" type="button" onClick={Edit(this.props.key)}  >Modify</button>
                 <button name="complete" type="button">Complete</button>
             </div>
         );
     }
+}
+
+function Edit(rowKey) {
+    var location = "Update.html?id=" + rowKey;
+    window.location = location;
 }
 
 function TodoCardList() {
