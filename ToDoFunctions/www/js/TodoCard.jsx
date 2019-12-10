@@ -58,19 +58,19 @@ class BasicTaskActions extends React.Component {
         this.props = props;
     }
 
+    Edit(rowKey) {
+        var location = "Update.html?id=" + rowKey;
+        window.location = location;
+    }
+
     render() {
         return (
             <div className="task-actions">
-                <button name="modify" type="button"   >Modify</button>
+                <button name="modify" type="button" onClick={Edit(this.props.key)}  >Modify</button>
                 <button name="complete" type="button">Complete</button>
             </div>
         );
     }
-}
-
-function Edit(rowKey) {
-    var location = "Update.html?id=" + rowKey;
-    window.location = location;
 }
 
 function TodoCardList() {
