@@ -39,13 +39,14 @@ class BasicTaskDescription extends React.Component {
         super(props);
         this.props = props;
     }
+
     render() {
         return (
-            <div className="taskdescription">
-                <div>Title: {this.props.item.title}</div>
-                <div>Description: {this.props.item.description}</div>
-                <div>Due Date: {this.props.item.duedate}</div>
-                <div>Priority: {this.props.item.priority}</div>
+            <div className="task-item">
+                <div className="task-title">Title: {this.props.item.title}</div>
+                <div className="task-description">Description: {this.props.item.description}</div>
+                <div className="task-duedate">Due Date: {this.props.item.due}</div>
+                <div className="task-priority">Priority: {this.props.item.priority}</div>
             </div>
         );
     };
@@ -53,9 +54,9 @@ class BasicTaskDescription extends React.Component {
 
 function BasicTaskActions() {
     return (
-        <div className="taskactions">
-            <button name="Modify" />
-            <button name="Complete" />
+        <div className="task-actions">
+            <button name="modify" type="button">Modify</button>
+            <button name="complete" type="button">Complete</button>
         </div>
     );
 }
@@ -82,8 +83,6 @@ function TodoCardList() {
         <div>
             {hasLoaded && items.map((item, index) => (
                 <div>
-                    <TodoCard key={item.id} title={item.title} description={item.description} />
-                    <hr></hr>
                     <BasicCard key={item.id} item={item} />
                     <hr></hr>
                 </div>
