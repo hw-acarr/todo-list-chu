@@ -54,8 +54,9 @@ class BasicTaskDescription extends React.Component {
 
 async function patchData(url = '', id = '') {
     var endpoint = url + id;
+    console.log(endpoint);
     const response = await fetch(endpoint, {
-        method: "PATCH",
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -77,7 +78,7 @@ class BasicTaskActions extends React.Component {
 
     completeAction(id) {
         try {
-            const data = patchData(this.baseUrl + '/api/todos/', id);
+            const data = patchData('/api/todos/', id);
             console.log(JSON.stringify(data));
         } catch (error) {
             console.error(error);
