@@ -81,10 +81,12 @@ function TodoCardList() {
     return (
         <div>
             {hasLoaded && items.map((item, index) => (
-                <TodoCard key={item.id} title={item.title} description={item.description} />
-                <hr></hr>
-                <BasicCard key={item.id} item={item} />
-                <hr></hr>
+                <div>
+                    <TodoCard key={item.id} title={item.title} description={item.description} />
+                    <hr></hr>
+                    <BasicCard key={item.id} item={item} />
+                    <hr></hr>
+                </div>
             ))}
         </div>
     );
