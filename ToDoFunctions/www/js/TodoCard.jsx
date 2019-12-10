@@ -52,15 +52,25 @@ class BasicTaskDescription extends React.Component {
     };
 }
 
-function BasicTaskActions() {
-    return (
-        <div className="task-actions">
-            <button name="modify" type="button">Modify</button>
-            <button name="complete" type="button">Complete</button>
-        </div>
-    );
+class BasicTaskActions extends React.Component() {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+    render() {
+        return (
+            <div className="task-actions">
+                <button name="modify" type="button" onClick={Edit(this.props.key)} >Modify</button>
+                <button name="complete" type="button">Complete</button>
+            </div>
+        );
+    }
 }
 
+function Edit(rowKey) {
+    var location = "Update.html?id=" + rowKey;
+    window.location = location;
+}
 
 function TodoCardList() {
     const [items, setItems] = React.useState([]);
