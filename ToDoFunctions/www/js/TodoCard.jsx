@@ -28,7 +28,7 @@ class BasicCard extends React.Component {
         return (
             <div className="taskcard">
                 <BasicTaskDescription item={this.props.item} />
-                <BasicTaskActions item={this.props.item} />
+                <BasicTaskActions />
             </div>
         );
     }
@@ -53,10 +53,7 @@ class BasicTaskDescription extends React.Component {
 }
 
 class BasicTaskActions extends React.Component() {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
+
     render() {
         return (
             <div className="task-actions">
