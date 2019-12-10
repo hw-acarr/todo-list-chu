@@ -58,7 +58,9 @@ class BasicTaskActions extends React.Component {
         this.props = props;
     }
 
-    Edit(rowKey) {
+    editAction(rowKey) {
+        console.log("Hit");
+        console.log(rowKey);
         var location = "Update.html?id=" + rowKey;
         window.location = location;
     }
@@ -66,7 +68,7 @@ class BasicTaskActions extends React.Component {
     render() {
         return (
             <div className="task-actions">
-                <button name="modify" type="button" onClick={() => Edit(this.props.key)}  >Modify</button>
+                <button name="modify" type="button" onClick={() => this.editAction(this.props.key)}  >Modify</button>
                 <button name="complete" type="button">Complete</button>
             </div>
         );
