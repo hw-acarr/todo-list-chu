@@ -28,7 +28,7 @@ class BasicCard extends React.Component {
         return (
             <div className="taskcard">
                 <BasicTaskDescription item={this.props.item} />
-                <BasicTaskActions />
+                <BasicTaskActions item={this.props.item} />
             </div>
         );
     }
@@ -65,11 +65,6 @@ class BasicTaskActions extends React.Component() {
             </div>
         );
     }
-}
-
-function Edit(rowKey) {
-    var location = "Update.html?id=" + rowKey;
-    window.location = location;
 }
 
 function TodoCardList() {
