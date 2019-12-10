@@ -77,7 +77,7 @@ class BasicTaskActions extends React.Component {
 
     completeAction(id) {
         try {
-            const data = await patchData('/api/todos/', id);
+            const data = patchData('/api/todos/', id);
             console.log(JSON.stringify(data));
         } catch (error) {
             console.error(error);
