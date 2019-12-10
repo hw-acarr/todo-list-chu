@@ -52,24 +52,45 @@ class BasicTaskDescription extends React.Component {
     };
 }
 
+async function patchData(url = '', id = '') {
+    var endpoint = this.baseUrl + url + id;
+    const response = await fetch(endpoint, {
+        method: "PATCH",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ isComplete: true })
+    });
+    return await response.json();
+}
+
 class BasicTaskActions extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
     }
 
-    editAction(rowKey) {
-        console.log("Hit");
-        console.log(rowKey);
-        var location = "Update.html?id=" + rowKey;
+    editAction(id) {
+        var location = "Update.html?id=" + id;
         window.location = location;
     }
+
+    completeAction(id) {
+        try {
+            const data = await patchData('/api/todos/', id);
+            console.log(JSON.stringify(data));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
 
     render() {
         return (
             <div className="task-actions">
                 <button name="modify" type="button" onClick={() => this.editAction(this.props.item.id)}  >Modify</button>
-                <button name="complete" type="button">Complete</button>
+                <button name="complete" type="button" onClick={() => this.completeAction(this.props.item.id)}>Complete</button>
             </div>
         );
     }
