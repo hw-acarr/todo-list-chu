@@ -78,6 +78,7 @@
                 }
 
                 var context = { Title: data[i].title, Description: data[i].description, Due: dateTime, RowKey: data[i].id };
+                console.log(context);
                 var source = $("#ToDoPanel").html();
                 var template = Handlebars.compile(source);
                 var html = template(context);
