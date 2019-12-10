@@ -28,7 +28,7 @@ class BasicCard extends React.Component {
         return (
             <div className="taskcard">
                 <BasicTaskDescription item={this.props.item} />
-                <BasicTaskActions key={this.props.item.id} />
+                <BasicTaskActions id={this.props.item.id} />
             </div>
         );
     }
@@ -60,7 +60,7 @@ class BasicTaskActions extends React.Component() {
     render() {
         return (
             <div className="task-actions">
-                <button name="modify" type="button" onClick={Edit(this.props.key)} >Modify</button>
+                <button name="modify" type="button" onClick={Edit(this.props.id)} >Modify</button>
                 <button name="complete" type="button">Complete</button>
             </div>
         );
