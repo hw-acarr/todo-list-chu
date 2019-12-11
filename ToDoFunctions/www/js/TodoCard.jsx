@@ -1,3 +1,4 @@
+// Not used....
 class TodoCard extends React.Component {
     constructor(props) {
         super(props);
@@ -18,38 +19,24 @@ class TodoCard extends React.Component {
     };
 }
 
-class BasicCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
-
-    render() {
-        return (
-            <div className="taskcard">
-                <BasicTaskDescription item={this.props.item} />
-                <BasicTaskActions item={this.props.item} />
-            </div>
-        );
-    }
+function BasicCard(props) {
+    return (
+        <div className="taskcard" id={props.item.id}>
+            <BasicTaskDescription item={props.item} />
+            <BasicTaskActions item={props.item} />
+        </div>
+    );
 }
 
-class BasicTaskDescription extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
-
-    render() {
-        return (
-            <div className="task-item">
-                <div className="task-title">Title: {this.props.item.title}</div>
-                <div className="task-description">Description: {this.props.item.description}</div>
-                <div className="task-duedate">Due Date: {this.props.item.due}</div>
-                <div className="task-priority">Priority: {this.props.item.priority}</div>
-            </div>
-        );
-    };
+function BasicTaskDescription(props) {
+    return (
+        <div className="task-item">
+            <div className="task-title">Title: {props.item.title}</div>
+            <div className="task-description">Description: {props.item.description}</div>
+            <div className="task-duedate">Due Date: {props.item.due}</div>
+            <div className="task-priority">Priority: {props.item.priority}</div>
+        </div>
+    );
 }
 
 async function patchData(url = '', id = '') {
