@@ -52,18 +52,13 @@ async function patchData(url = '', id = '') {
     return await response.json();
 }
 
-class BasicTaskActions extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
-
-    editAction(id) {
+function BasicTaskActions(props) {
+    var editAction = (id) => {
         var location = "Update.html?id=" + id;
         window.location = location;
     }
 
-    completeAction(id) {
+    var completeAction = (id) => {
         try {
             const data = patchData('/api/todos/', id);
             console.log(JSON.stringify(data));
@@ -72,16 +67,12 @@ class BasicTaskActions extends React.Component {
         }
     }
 
-
-
-    render() {
-        return (
-            <div className="task-actions">
-                <button name="modify" type="button" onClick={() => this.editAction(this.props.item.id)}  >Modify</button>
-                <button name="complete" type="button" onClick={() => this.completeAction(this.props.item.id)}>Complete</button>
-            </div>
-        );
-    }
+    return (
+        <div className="task-actions">
+            <button name="modify" type="button" onClick={() => editAction(this.props.item.id)}  >Modify</button>
+            <button name="complete" type="button" onClick={() => completeAction(this.props.item.id)}>Complete</button>
+        </div>
+    );
 }
 
 function TodoCardList() {
@@ -89,7 +80,6 @@ function TodoCardList() {
     const [hasLoaded, setLoadedStatus] = React.useState(false);
 
     React.useEffect(() => {
-
         fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then(data => {
@@ -98,7 +88,6 @@ function TodoCardList() {
                 setLoadedStatus(true);
             })
             .catch(error => console.log(error));
-
     }, []);
 
     return (
