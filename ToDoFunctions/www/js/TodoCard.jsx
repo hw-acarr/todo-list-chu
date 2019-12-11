@@ -69,8 +69,8 @@ function BasicTaskActions(props) {
 
     return (
         <div className="task-actions">
-            <button name="modify" type="button" onClick={() => editAction(this.props.item.id)}  >Modify</button>
-            <button name="complete" type="button" onClick={() => completeAction(this.props.item.id)}>Complete</button>
+            <button name="modify" type="button" onClick={() => editAction(props.item.id)}  >Modify</button>
+            <button name="complete" type="button" onClick={() => completeAction(props.item.id)}>Complete</button>
         </div>
     );
 }
