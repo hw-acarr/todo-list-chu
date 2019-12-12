@@ -23,7 +23,7 @@ function BasicCard(props) {
     return (
         <div className="taskcard" id={props.item.id}>
             <BasicTaskDescription item={props.item} />
-            <BasicTaskActions item={props.item} />
+            <BasicTaskActions item={props.item} remove={props.remove} />
         </div>
     );
 }
@@ -52,16 +52,17 @@ async function patchData(url = '', id = '') {
     return await response.json();
 }
 
-function BasicTaskActions(props) {
+function BasicTaskActions(props, remove) {
     var editAction = (id) => {
         var location = "Update.html?id=" + id;
         window.location = location;
     }
 
-    var completeAction = (id) => {
+    var completeAction = (id, remove) => {
         try {
             const data = patchData('/api/todos/', id);
             console.log(JSON.stringify(data));
+            remove(id);
         } catch (error) {
             console.error(error);
         }
@@ -70,7 +71,7 @@ function BasicTaskActions(props) {
     return (
         <div className="task-actions">
             <button name="modify" type="button" onClick={() => editAction(props.item.id)}  >Modify</button>
-            <button name="complete" type="button" onClick={() => completeAction(props.item.id)}>Complete</button>
+            <button name="complete" type="button" onClick={() => completeAction(props.item.id, remove)}>Complete</button>
         </div>
     );
 }
@@ -78,6 +79,12 @@ function BasicTaskActions(props) {
 function TodoCardList() {
     const [items, setItems] = React.useState([]);
     const [hasLoaded, setLoadedStatus] = React.useState(false);
+
+    var removeItem = (key) => {
+        let filtered = items.filter(item => item.id !== key);
+        console.log(filtered);
+        setItems(filtered);
+    }
 
     React.useEffect(() => {
         fetch('/api/todos?includecompleted=false&includeactive=true')
@@ -94,7 +101,7 @@ function TodoCardList() {
         <div>
             {hasLoaded && items.map((item, index) => (
                 <div>
-                    <BasicCard key={item.id} item={item} />
+                    <BasicCard key={item.id} item={item} remove={removeItem} />
                     <hr></hr>
                 </div>
             ))}
