@@ -4,6 +4,7 @@ class App extends React.Component {
             <div>
                 <Counter />
                 <TitleBar />
+                <NewItem />
                 <TodoCardList />
             </div>
         );
