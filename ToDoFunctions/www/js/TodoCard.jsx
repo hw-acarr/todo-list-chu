@@ -1,24 +1,3 @@
-// Not used....
-class TodoCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
-
-    render() {
-        return (
-            <div className="panel-container">
-                <div className="panel-heading">
-                    <h3 className="panel-title">{this.props.title}</h3>
-                </div>
-                <div className="panel-body">
-                    <ReactMarkdown source={this.props.description} />
-                </div>
-            </div>
-        )
-    };
-}
-
 function BasicCard(props) {
     return (
         <div className="taskcard" id={props.item.id}>
