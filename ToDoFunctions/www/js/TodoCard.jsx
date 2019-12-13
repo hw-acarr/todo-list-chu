@@ -23,7 +23,7 @@ function BasicCard(props) {
     return (
         <div className="taskcard" id={props.item.id}>
             <BasicTaskDescription item={props.item} />
-            <BasicTaskActions item={props.item} remove={props.remove} />
+            <BasicTaskActions item={props.item} removeFunction={props.removeFunction} />
         </div>
     );
 }
@@ -52,7 +52,7 @@ async function patchData(url = '', id = '') {
     return await response.json();
 }
 
-function BasicTaskActions(props, remove) {
+function BasicTaskActions(props) {
     var editAction = (id) => {
         var location = "Update.html?id=" + id;
         window.location = location;
@@ -71,7 +71,7 @@ function BasicTaskActions(props, remove) {
     return (
         <div className="task-actions">
             <button name="modify" type="button" onClick={() => editAction(props.item.id)}  >Modify</button>
-            <button name="complete" type="button" onClick={() => completeAction(props.item.id, remove)}>Complete</button>
+            <button name="complete" type="button" onClick={() => completeAction(props.item.id, props.removeFunction)}>Complete</button>
         </div>
     );
 }
@@ -101,7 +101,7 @@ function TodoCardList() {
         <div>
             {hasLoaded && items.map((item, index) => (
                 <div>
-                    <BasicCard key={item.id} item={item} remove={removeItem} />
+                    <BasicCard key={item.id} item={item} removeFunction={removeItem} />
                     <hr></hr>
                 </div>
             ))}
