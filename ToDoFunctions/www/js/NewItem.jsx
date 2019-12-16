@@ -22,53 +22,53 @@ async function createAction(taskTitle = '', taskDescription = '', taskDueDate = 
         description: taskDescription,
         due: taskDueDate,
         isComplete: false,
-        id: $("#RowKey").val()
     };
-    TodoClient.prototype.create = function (todo, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', this.baseUrl + '/api/todos');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.onload = function () {
-            if (xhr.status === 200 || xhr.status === 201) {
-                callback(null, safeJsonParse(xhr.responseText));
-            }
-            else {
-                callback(xhr.responseText);
-            }
-        };
-        xhr.send(JSON.stringify(todo));
+
+    // TodoClient.prototype.create = function (todo, callback) {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('POST', this.baseUrl + '/api/todos');
+    //     xhr.setRequestHeader('Content-Type', 'application/json');
+    //     xhr.onload = function () {
+    //         if (xhr.status === 200 || xhr.status === 201) {
+    //             callback(null, safeJsonParse(xhr.responseText));
+    //         }
+    //         else {
+    //             callback(xhr.responseText);
+    //         }
+    //     };
+    //     xhr.send(JSON.stringify(todo));
 
 
-        var endpoint = url + id;
-        console.log(endpoint);
-        const response = await fetch(endpoint, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ isComplete: true })
-        });
-        return await response.json();
-    }
+    //     var endpoint = url + id;
+    //     console.log(endpoint);
+    //     const response = await fetch(endpoint, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ isComplete: true })
+    //     });
+    //     return await response.json();
+    // }
+}
 
-    function NewItemPane() {
-        return (
-            <div className="new-item-pane">
-                <div className="header">
-                    Add New To Do Item
+function NewItemPane() {
+    return (
+        <div className="new-item-pane">
+            <div className="header">
+                Add New To Do Item
             </div>
-                <div className="form-body">
-                    <form id="new-item">
-                        <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" />
-                        <br />
-                        <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40"></textarea>
-                        <br />
-                        <input type="date" id="date" name="Due Date" />
-                        <br />
-                        <button type="submit" className="new-item-control" onClick={() => createAction()} > Add</button>
-                    </form>
-                </div>
+            <div className="form-body">
+                <form id="new-item">
+                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" />
+                    <br />
+                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40"></textarea>
+                    <br />
+                    <input type="date" id="date" name="Due Date" />
+                    <br />
+                    <button type="submit" className="new-item-control" onClick={() => createAction()} > Add</button>
+                </form>
             </div>
-        );
-    }
+        </div>
+    );
 }
