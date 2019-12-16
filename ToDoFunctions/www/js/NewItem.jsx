@@ -2,8 +2,6 @@ function NewItem() {
     const [displayNewItemPane, setDisplayNewItemPane] = React.useState(false);
     var newAction = () => {
         setDisplayNewItemPane(true);
-        //var location = "Create.html";
-        //window.location = location;
     }
 
     if (displayNewItemPane) {
@@ -16,6 +14,41 @@ function NewItem() {
         );
     }
 
+}
+
+async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '') {
+    var form = {
+        title: taskTitle,
+        description: taskDescription,
+        due: taskDueDate,
+        isComplete: false,
+        id: $("#RowKey").val()
+    };
+    TodoClient.prototype.create = function (todo, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', this.baseUrl + '/api/todos');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200 || xhr.status === 201) {
+                callback(null, safeJsonParse(xhr.responseText));
+            }
+            else {
+                callback(xhr.responseText);
+            }
+        };
+        xhr.send(JSON.stringify(todo));
+
+        
+    var endpoint = url + id;
+    console.log(endpoint);
+    const response = await fetch(endpoint, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ isComplete: true })
+    });
+    return await response.json();
 }
 
 function NewItemPane() {
@@ -32,25 +65,9 @@ function NewItemPane() {
                     <br />
                     <input type="date" id="date" name="Due Date" />
                     <br />
-                    <button type="submit" className="new-item-control">Add</button>
+                    <button type="submit" className="new-item-control" onClick={() => createAction() > Add</button>
                 </form>
             </div>
         </div>
     );
 }
-
-/*
-    <div class="container">
-        <div class="page-header">
-            <h2>Add New To Do Item</h2>
-        </div>
-        <form id="todoform">
-            <input id="Title" name="Title" type="text" class="form-control" placeholder="Title" /><br />
-            <input id="Description" name="Description" type="text" class="form-control"
-                placeholder="Description" /><br />
-            Due: <input id="Due" name="Due" type="date" class="form-control" /><br />
-            <button type="submit" class="btn btn-default">Add</button>
-            <input type="button" onclick="location.href = 'index.html';" value="Go Back" class="btn btn-default" />
-        </form>
-    </div>
-*/
