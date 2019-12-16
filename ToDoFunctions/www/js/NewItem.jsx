@@ -38,36 +38,37 @@ async function createAction(taskTitle = '', taskDescription = '', taskDueDate = 
         };
         xhr.send(JSON.stringify(todo));
 
-        
-    var endpoint = url + id;
-    console.log(endpoint);
-    const response = await fetch(endpoint, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ isComplete: true })
-    });
-    return await response.json();
-}
 
-function NewItemPane() {
-    return (
-        <div className="new-item-pane">
-            <div className="header">
-                Add New To Do Item
+        var endpoint = url + id;
+        console.log(endpoint);
+        const response = await fetch(endpoint, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ isComplete: true })
+        });
+        return await response.json();
+    }
+
+    function NewItemPane() {
+        return (
+            <div className="new-item-pane">
+                <div className="header">
+                    Add New To Do Item
             </div>
-            <div className="form-body">
-                <form id="new-item">
-                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" />
-                    <br />
-                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40"></textarea>
-                    <br />
-                    <input type="date" id="date" name="Due Date" />
-                    <br />
-                    <button type="submit" className="new-item-control" onClick={() => createAction() > Add</button>
-                </form>
+                <div className="form-body">
+                    <form id="new-item">
+                        <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" />
+                        <br />
+                        <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40"></textarea>
+                        <br />
+                        <input type="date" id="date" name="Due Date" />
+                        <br />
+                        <button type="submit" className="new-item-control" onClick={() => createAction()} > Add</button>
+                    </form>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
