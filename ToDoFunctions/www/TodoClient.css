@@ -1,12 +1,10 @@
-.task-item {
-    display:    flex;
-    flex-direction: column
+.task {
+    display:        flex;
+    max-width: 100%;
 }
 
 .task-info {
     display:    flex;
+    flex-direction: column
 }
 
-.task-detail {
-    
-}

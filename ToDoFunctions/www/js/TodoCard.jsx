@@ -9,22 +9,27 @@ function BasicCard(props) {
 
 function BasicTaskDescription(props) {
     /*
-<task-item>
+<task>
+  <modify-button />
+  <priority />
   <task-info>
-  <task-description>
-</task-item>
+    <task-description />
+    <task-details />
+  </task-info>
+  <due-date />
+  <complete-button />
+</task>
     */
     return (
-        <div className="task-item">
+        <div className="task">
+            <button name="modify" type="button">Modify</button>
+            <div className="task-priority">Priority: {props.item.priority}</div>
             <div className="task-info">
-                <input className="task-check" type="checkbox" />
-                <div className="task-priority">Priority: {props.item.priority}</div>
                 <div className="task-title">Title: {props.item.title}</div>
-                <div className="task-duedate">Due Date: {props.item.due}</div>
-            </div>
-            <div className="task-detail">
                 <div className="task-description">Description: {props.item.description}</div>
             </div>
+            <div className="task-duedate">Due Date: {props.item.due}</div>
+            <button name="complete" type="button">Complete</button>
         </div>
     );
 }
