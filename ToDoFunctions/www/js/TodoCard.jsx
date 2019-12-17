@@ -22,14 +22,18 @@ function BasicTaskDescription(props) {
     */
     return (
         <div className="task">
-            <button name="modify" type="button">Modify</button>
+            <div>
+                <button name="modify" type="button">Modify</button>
+            </div>
             <div className="task-priority">Priority: {props.item.priority}</div>
             <div className="task-info">
                 <div className="task-title">Title: {props.item.title}</div>
                 <div className="task-description">Description: {props.item.description}</div>
             </div>
             <div className="task-duedate">Due Date: {props.item.due}</div>
-            <button name="complete" type="button">Complete</button>
+            <div>
+                <button name="complete" type="button">Complete</button>
+            </div>
         </div>
     );
 }
