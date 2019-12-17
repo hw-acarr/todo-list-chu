@@ -1,10 +1,9 @@
 function BasicCard(props) {
     return (
-        <div className="taskcard" id={props.item.id}>
+        <React.Fragment>
             <BasicTaskDescription item={props.item} />
-            <BasicTaskActions item={props.item} removeFunction={props.removeFunction} />
-            <br />
-        </div>
+            <hr />
+        </React.Fragment>
     );
 }
 
