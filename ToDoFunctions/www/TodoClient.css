@@ -1,3 +1,7 @@
+.task-list {
+    max-width: 66%;
+}
+
 .task {
     display:        flex;
     max-width: 100%;

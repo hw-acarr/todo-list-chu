@@ -3,6 +3,7 @@ function BasicCard(props) {
         <div className="taskcard" id={props.item.id}>
             <BasicTaskDescription item={props.item} />
             <BasicTaskActions item={props.item} removeFunction={props.removeFunction} />
+            <br />
         </div>
     );
 }
@@ -93,12 +94,9 @@ function TodoCardList() {
     }, []);
 
     return (
-        <div>
+        <div className="task-list">
             {hasLoaded && items.map((item, index) => (
-                <div>
-                    <BasicCard key={item.id} item={item} removeFunction={removeItem} />
-                    <hr></hr>
-                </div>
+                <BasicCard key={item.id} item={item} removeFunction={removeItem} />
             ))}
         </div>
     );
