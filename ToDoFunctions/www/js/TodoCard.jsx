@@ -25,16 +25,31 @@ function BasicTaskDescription(props) {
             <div>
                 <button name="modify" type="button">Modify</button>
             </div>
-            <div className="task-priority">Priority: {props.item.priority}</div>
+            <Priority priority={props.item.priority} />
             <div className="task-info">
                 <div className="task-title">Title: {props.item.title}</div>
                 <div className="task-description">Description: {props.item.description}</div>
             </div>
+            <TaskDueDate due={props.item.due} />
             <div className="task-duedate">Due Date: {props.item.due}</div>
             <div>
                 <button name="complete" type="button">Complete</button>
             </div>
         </div>
+    );
+}
+
+function Priority(props) {
+    var image = "./img/high.png";
+    // At this point, do a switch statement to figure out the correct value of 'image' and {props.priority}
+    return (
+        <img src={image} height="32" width="32" />
+    );
+}
+
+function TaskDueDate(props) {
+    return (
+        <div className="task-duedate">Due Date: {props.due}</div>
     );
 }
 
