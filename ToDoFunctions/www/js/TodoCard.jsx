@@ -22,7 +22,7 @@ function BasicTaskDescription(props) {
     */
     return (
         <div className="task">
-            <div>
+            <div className="task-button">
                 <button name="modify" type="button">Modify</button>
             </div>
             <Priority priority={props.item.priority} />
@@ -32,7 +32,7 @@ function BasicTaskDescription(props) {
             </div>
             <TaskDueDate due={props.item.due} />
             <div className="task-duedate">Due Date: {props.item.due}</div>
-            <div>
+            <div className="task-button">
                 <button name="complete" type="button">Complete</button>
             </div>
         </div>
@@ -40,8 +40,18 @@ function BasicTaskDescription(props) {
 }
 
 function Priority(props) {
-    var image = "./img/high.png";
-    // At this point, do a switch statement to figure out the correct value of 'image' and {props.priority}
+    let image = "./img/normal.png";
+    switch (props.priority) {
+        case "high":
+            image = "./img/high.png";
+            break;
+        case "low":
+            image = "./img/low.png";
+            break;
+        default:
+            image = "./img/normal.png";
+    }
+
     return (
         <img src={image} height="32" width="32" />
     );

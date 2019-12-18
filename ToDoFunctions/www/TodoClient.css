@@ -1,15 +1,19 @@
 .task-list {
-    max-width: 66%;
+    max-width:          66%;
 }
 
 .task {
-    display:        flex;
-    max-width: 100%;
+    display:            flex;
+    max-width:          100%;
 }
 
 .task-info {
-    display:    flex;
-    flex-direction: column;
+    display:            flex;
+    flex-direction:     column;
     flex-grow: 1;
+}
+
+.task-button {
+    padding:            10px;
 }
 
