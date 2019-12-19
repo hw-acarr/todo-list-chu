@@ -16,12 +16,13 @@ function NewItem() {
 
 }
 
-async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '') {
+async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '', priority = '') {
     var form = {
         title: taskTitle,
         description: taskDescription,
         due: taskDueDate,
         isComplete: false,
+        priority: priority
     };
 
     // TodoClient.prototype.create = function (todo, callback) {
@@ -66,6 +67,11 @@ function NewItemPane() {
                     <br />
                     <input type="date" id="date" name="Due Date" />
                     <br />
+                    <select name="priority">
+                        <option value="high">High</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="low">Low</option>
+                    </select>
                     <button type="submit" className="new-item-control" onClick={() => createAction()} > Add</button>
                 </form>
             </div>
