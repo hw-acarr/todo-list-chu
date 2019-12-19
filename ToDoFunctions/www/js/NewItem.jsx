@@ -53,21 +53,37 @@ async function createAction(taskTitle = '', taskDescription = '', taskDueDate = 
     // }
 }
 
-function NewItemPane() {
+function NewItemPane(props) {
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [dueDate, setDueDate] = useState();
+    const [priority, setPriority] = useState();
+
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+
+        props.onSubmit({
+            title,
+            description,
+            dueDate,
+            priority
+        });
+    }
+
     return (
         <div className="new-item-pane">
             <div className="header">
                 Add New To Do Item
             </div>
             <div className="form-body">
-                <form id="new-item">
-                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" />
+                <form id="new-item" onSubmit={handleFormSubmit}>
+                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
                     <br />
-                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40"></textarea>
+                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
                     <br />
-                    <input type="date" id="date" name="Due Date" />
+                    <input type="date" id="date" name="Due Date" value={dueDate} onChange={(event) => setDueDate(event.target.value)} />
                     <br />
-                    <select name="priority">
+                    <select name="priority" value={priority} onChange={(event) => setPriority(event.target.value)}>
                         <option value="high">High</option>
                         <option value="normal" selected>Normal</option>
                         <option value="low">Low</option>
