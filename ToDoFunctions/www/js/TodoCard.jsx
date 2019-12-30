@@ -26,12 +26,8 @@ function BasicTaskDescription(props) {
                 <button name="modify" type="button">Modify</button>
             </div>
             <Priority priority={props.item.priority} />
-            <div className="task-info">
-                <div className="task-title">Title: {props.item.title}</div>
-                <div className="task-description">Description: {props.item.description}</div>
-            </div>
+            <TaskInfo title={props.item.title} description={props.item.description} />
             <TaskDueDate due={props.item.due} />
-            <div className="task-duedate">Due Date: {props.item.due}</div>
             <div className="task-button">
                 <button name="complete" type="button">Complete</button>
             </div>
@@ -39,7 +35,17 @@ function BasicTaskDescription(props) {
     );
 }
 
+function TaskInfo(props) {
+    return (
+        <div className="task-info">
+            <div className="task-title">Title: {props.title}</div>
+            <div className="task-description">Description: {props.description}</div>
+        </div>
+    );
+}
+
 function Priority(props) {
+    // TODO - what if props.property doesn't exist?
     let image = "./img/normal.png";
     switch (props.priority) {
         case "high":
