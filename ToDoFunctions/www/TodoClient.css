@@ -17,3 +17,8 @@
     padding:            10px;
 }
 
+.title-header {
+    border-bottom:      1px solid #b5d5ff;
+    padding-bottom:     5px;
+    height:             15px;
+}
