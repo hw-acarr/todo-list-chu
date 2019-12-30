@@ -16,7 +16,8 @@ namespace ToDoFunctions.Entities
                 Title = todo.title,
                 Description = todo.description,
                 Due = todo.due,
-                IsComplete = todo.isComplete
+                IsComplete = todo.isComplete,
+                Priority = todo.priority
             };
         }
 
@@ -28,7 +29,8 @@ namespace ToDoFunctions.Entities
                 title = item.Title,
                 description = item.Description,
                 due = item.Due,
-                isComplete = item.IsComplete
+                isComplete = item.IsComplete,
+                priority = item.Priority
             };
         }
     }
