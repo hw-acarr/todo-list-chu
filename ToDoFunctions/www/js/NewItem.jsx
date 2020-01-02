@@ -25,6 +25,7 @@ function NewItemPane(props) {
     const [taskDescription, setDescription] = React.useState();
     const [taskDueDate, setDueDate] = React.useState();
     const [taskPriority, setPriority] = React.useState("normal");
+    const [closePane, setClosePane] = React.useState(props.closeAction);
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -47,6 +48,9 @@ function NewItemPane(props) {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
+            })
+            .then({
+                closePane();
             })
             .catch((error) => {
                 console.error('Error:', error);
