@@ -49,7 +49,7 @@ function NewItemPane(props) {
             .then((data) => {
                 console.log('Success:', data);
             })
-            .then({
+            .then(() => {
                 closePane();
             })
             .catch((error) => {
