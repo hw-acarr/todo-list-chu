@@ -4,9 +4,13 @@ function NewItem() {
         setDisplayNewItemPane(true);
     }
 
+    var closeNewActionPane = () => {
+        setDisplayNewItemPane(false);
+    }
+
     if (displayNewItemPane) {
         return (
-            <NewItemPane />
+            <NewItemPane closeAction={closeNewActionPane} />
         );
     } else {
         return (
@@ -16,58 +20,6 @@ function NewItem() {
 
 }
 
-// async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '', priority = '') {
-//     const data = {
-//         title: taskTitle,
-//         description: taskDescription,
-//         due: taskDueDate,
-//         isComplete: false,
-//         priority: priority
-//     };
-
-//     fetch('/api/todos', {
-//         method: 'POST', // or 'PUT'
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//     })
-//         .then((response) => response.json())
-//         .then((data) => {
-//             console.log('Success:', data);
-//         })
-//         .catch((error) => {
-//             console.error('Error:', error);
-//         });
-
-// TodoClient.prototype.create = function (todo, callback) {
-//     var xhr = new XMLHttpRequest();
-//     xhr.open('POST', this.baseUrl + '/api/todos');
-//     xhr.setRequestHeader('Content-Type', 'application/json');
-//     xhr.onload = function () {
-//         if (xhr.status === 200 || xhr.status === 201) {
-//             callback(null, safeJsonParse(xhr.responseText));
-//         }
-//         else {
-//             callback(xhr.responseText);
-//         }
-//     };
-//     xhr.send(JSON.stringify(todo));
-
-
-//     var endpoint = url + id;
-//     console.log(endpoint);
-//     const response = await fetch(endpoint, {
-//         method: 'PATCH',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({ isComplete: true })
-//     });
-//     return await response.json();
-// }
-//}
-
 function NewItemPane(props) {
     const [taskTitle, setTitle] = React.useState();
     const [taskDescription, setDescription] = React.useState();
@@ -76,8 +28,6 @@ function NewItemPane(props) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
-        console.log(event.target);
 
         const data = {
             title: taskTitle,
@@ -122,6 +72,7 @@ function NewItemPane(props) {
                         <option value="low">Low</option>
                     </select>
                     <button type="submit" className="new-item-control"> Add</button>
+                    <button type="button" className="new-item-control" onClick={props.closeAction}>Cancel</button>
                 </form>
             </div>
         </div>
