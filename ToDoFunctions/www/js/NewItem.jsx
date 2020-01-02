@@ -72,10 +72,12 @@ function NewItemPane(props) {
     const [taskTitle, setTitle] = React.useState();
     const [taskDescription, setDescription] = React.useState();
     const [taskDueDate, setDueDate] = React.useState();
-    const [taskPriority, setPriority] = React.useState();
+    const [taskPriority, setPriority] = React.useState("normal");
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        console.log(event.target);
 
         const data = {
             title: taskTitle,
@@ -114,9 +116,9 @@ function NewItemPane(props) {
                     <br />
                     <input type="date" id="date" name="Due Date" value={dueDate} onChange={(event) => setDueDate(event.target.value)} />
                     <br />
-                    <select name="priority" value={priority} onChange={(event) => setPriority(event.target.value)}>
+                    <select name="priority" value={taskPriority} onChange={(event) => setPriority(event.target.value)}>
                         <option value="high">High</option>
-                        <option value="normal" selected>Normal</option>
+                        <option value="normal">Normal</option>
                         <option value="low">Low</option>
                     </select>
                     <button type="submit" className="new-item-control"> Add</button>
