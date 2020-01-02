@@ -69,10 +69,10 @@ function NewItem() {
 //}
 
 function NewItemPane(props) {
-    const [title, setTitle] = React.useState();
-    const [description, setDescription] = React.useState();
-    const [dueDate, setDueDate] = React.useState();
-    const [priority, setPriority] = React.useState();
+    const [taskTitle, setTitle] = React.useState();
+    const [taskDescription, setDescription] = React.useState();
+    const [taskDueDate, setDueDate] = React.useState();
+    const [taskPriority, setPriority] = React.useState();
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -82,7 +82,7 @@ function NewItemPane(props) {
             description: taskDescription,
             due: taskDueDate,
             isComplete: false,
-            priority: priority
+            priority: taskPriority
         };
 
         fetch('/api/todos', {
