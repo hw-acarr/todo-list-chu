@@ -17,13 +17,28 @@ function NewItem() {
 }
 
 async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '', priority = '') {
-    var form = {
+    const data = {
         title: taskTitle,
         description: taskDescription,
         due: taskDueDate,
         isComplete: false,
         priority: priority
     };
+
+    fetch('/api/todos', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 
     // TodoClient.prototype.create = function (todo, callback) {
     //     var xhr = new XMLHttpRequest();
@@ -59,16 +74,16 @@ function NewItemPane(props) {
     const [dueDate, setDueDate] = React.useState();
     const [priority, setPriority] = React.useState();
 
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
+    // const handleFormSubmit = (event) => {
+    //     event.preventDefault();
 
-        props.onSubmit({
-            title,
-            description,
-            dueDate,
-            priority
-        });
-    }
+    //     props.onSubmit({
+    //         title,
+    //         description,
+    //         dueDate,
+    //         priority
+    //     });
+    // }
 
     return (
         <div className="new-item-pane">
@@ -76,7 +91,7 @@ function NewItemPane(props) {
                 Add New To Do Item
             </div>
             <div className="form-body">
-                <form id="new-item" onSubmit={handleFormSubmit}>
+                <form id="new-item" onSubmit={() => createAction()}>
                     <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
                     <br />
                     <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
@@ -88,7 +103,7 @@ function NewItemPane(props) {
                         <option value="normal" selected>Normal</option>
                         <option value="low">Low</option>
                     </select>
-                    <button type="submit" className="new-item-control" onClick={() => createAction()} > Add</button>
+                    <button type="submit" className="new-item-control"> Add</button>
                 </form>
             </div>
         </div>
