@@ -107,7 +107,7 @@ function NewItemPane(props) {
                 Add New To Do Item
             </div>
             <div className="form-body">
-                <form id="new-item" onSubmit={this.handleFormSubmit}>
+                <form id="new-item" onSubmit={handleFormSubmit}>
                     <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
                     <br />
                     <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
