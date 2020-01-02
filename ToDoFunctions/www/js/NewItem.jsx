@@ -110,11 +110,11 @@ function NewItemPane(props) {
             </div>
             <div className="form-body">
                 <form id="new-item" onSubmit={handleFormSubmit}>
-                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
+                    <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={taskTitle} onChange={(event) => setTitle(event.target.value)} />
                     <br />
-                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
+                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{taskDescription}</textarea>
                     <br />
-                    <input type="date" id="date" name="Due Date" value={dueDate} onChange={(event) => setDueDate(event.target.value)} />
+                    <input type="date" id="date" name="Due Date" value={taskDueDate} onChange={(event) => setDueDate(event.target.value)} />
                     <br />
                     <select name="priority" value={taskPriority} onChange={(event) => setPriority(event.target.value)}>
                         <option value="high">High</option>
