@@ -16,57 +16,57 @@ function NewItem() {
 
 }
 
-async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '', priority = '') {
-    const data = {
-        title: taskTitle,
-        description: taskDescription,
-        due: taskDueDate,
-        isComplete: false,
-        priority: priority
-    };
+// async function createAction(taskTitle = '', taskDescription = '', taskDueDate = '', url = '', id = '', priority = '') {
+//     const data = {
+//         title: taskTitle,
+//         description: taskDescription,
+//         due: taskDueDate,
+//         isComplete: false,
+//         priority: priority
+//     };
 
-    fetch('/api/todos', {
-        method: 'POST', // or 'PUT'
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+//     fetch('/api/todos', {
+//         method: 'POST', // or 'PUT'
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data),
+//     })
+//         .then((response) => response.json())
+//         .then((data) => {
+//             console.log('Success:', data);
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//         });
 
-    // TodoClient.prototype.create = function (todo, callback) {
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', this.baseUrl + '/api/todos');
-    //     xhr.setRequestHeader('Content-Type', 'application/json');
-    //     xhr.onload = function () {
-    //         if (xhr.status === 200 || xhr.status === 201) {
-    //             callback(null, safeJsonParse(xhr.responseText));
-    //         }
-    //         else {
-    //             callback(xhr.responseText);
-    //         }
-    //     };
-    //     xhr.send(JSON.stringify(todo));
+// TodoClient.prototype.create = function (todo, callback) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('POST', this.baseUrl + '/api/todos');
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//     xhr.onload = function () {
+//         if (xhr.status === 200 || xhr.status === 201) {
+//             callback(null, safeJsonParse(xhr.responseText));
+//         }
+//         else {
+//             callback(xhr.responseText);
+//         }
+//     };
+//     xhr.send(JSON.stringify(todo));
 
 
-    //     var endpoint = url + id;
-    //     console.log(endpoint);
-    //     const response = await fetch(endpoint, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ isComplete: true })
-    //     });
-    //     return await response.json();
-    // }
-}
+//     var endpoint = url + id;
+//     console.log(endpoint);
+//     const response = await fetch(endpoint, {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ isComplete: true })
+//     });
+//     return await response.json();
+// }
+//}
 
 function NewItemPane(props) {
     const [title, setTitle] = React.useState();
@@ -74,16 +74,32 @@ function NewItemPane(props) {
     const [dueDate, setDueDate] = React.useState();
     const [priority, setPriority] = React.useState();
 
-    // const handleFormSubmit = (event) => {
-    //     event.preventDefault();
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
 
-    //     props.onSubmit({
-    //         title,
-    //         description,
-    //         dueDate,
-    //         priority
-    //     });
-    // }
+        const data = {
+            title: taskTitle,
+            description: taskDescription,
+            due: taskDueDate,
+            isComplete: false,
+            priority: priority
+        };
+
+        fetch('/api/todos', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
 
     return (
         <div className="new-item-pane">
@@ -91,7 +107,7 @@ function NewItemPane(props) {
                 Add New To Do Item
             </div>
             <div className="form-body">
-                <form id="new-item" onSubmit={() => createAction()}>
+                <form id="new-item" onSubmit={this.handleFormSubmit}>
                     <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={title} onChange={(event) => setTitle(event.target.value)} />
                     <br />
                     <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{description}</textarea>
