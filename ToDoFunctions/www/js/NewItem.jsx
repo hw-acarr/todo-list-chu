@@ -11,15 +11,15 @@ function NewItem() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         console.log(event.target);
-        console.log(event.target.title.name);
-        console.log(event.target.title.value);
+        console.log(event.target.date.title);
+        console.log(event.target.date.value);
         console.log("Hi!");
         const data = {
-            title: event.target.title,
-            description: event.target.description,
-            due: event.target.date,
+            title: event.target.title.value,
+            description: event.target.description.value,
+            due: event.target.date.value,
             isComplete: false,
-            priority: event.target.priority
+            priority: event.target.priority.value
         };
 
         fetch('/api/todos', {
