@@ -1,12 +1,12 @@
 function NewItem() {
     const [displayNewItemPane, setDisplayNewItemPane] = React.useState(false);
-    var setNewItemPaneVisible = (visible) => {
-        setDisplayNewItemPane(visible);
+    var showNewItemPane = () => {
+        setDisplayNewItemPane(true);
     }
 
-    // var closeNewActionPane = () => {
-    //     setDisplayNewItemPane(false);
-    // }
+    var hideNewItemPane = () => {
+        setDisplayNewItemPane(false);
+    }
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
@@ -31,7 +31,7 @@ function NewItem() {
                 console.log('Success:', data);
             })
             .then(() => {
-                setDisplayNewItemPane(false);
+                hideNewItemPane();
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -40,11 +40,11 @@ function NewItem() {
 
     if (displayNewItemPane) {
         return (
-            <NewItemPane submitAction={handleFormSubmit} closeAction={setNewItemPaneVisible} />
+            <NewItemPane submitAction={handleFormSubmit} closeAction={hideNewItemPane} />
         );
     } else {
         return (
-            <input type="button" className="btn btn-default" onClick={() => setNewItemPaneVisible(true)} value="Add A New To Do Item" />
+            <input type="button" className="btn btn-default" onClick={() => showNewItemPane()} value="Add A New To Do Item" />
         );
     }
 
@@ -75,7 +75,7 @@ function NewItemPane(props) {
                         <option value="low">Low</option>
                     </select>
                     <button type="submit" className="new-item-control"> Add</button>
-                    <button type="button" className="new-item-control" onClick={props.closeAction(false)}>Cancel</button>
+                    <button type="button" className="new-item-control" onClick={props.closeAction()}>Cancel</button>
                 </form>
             </div>
         </div>
