@@ -10,10 +10,7 @@ function NewItem() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        console.log(event.target);
-        console.log(event.target.date.title);
-        console.log(event.target.date.value);
-        console.log("Hi!");
+
         const data = {
             title: event.target.title.value,
             description: event.target.description.value,
@@ -47,7 +44,7 @@ function NewItem() {
         );
     } else {
         return (
-            <input type="button" className="btn btn-default" onClick={() => setDisplayNewItemPane(true)} value="Add A New To Do Item" />
+            <input type="button" className="btn btn-default" onClick={setDisplayNewItemPane(true)} value="Add A New To Do Item" />
         );
     }
 
