@@ -56,7 +56,7 @@ function NewItem() {
 function NewItemPane(props) {
     const [taskTitle, setTitle] = React.useState('');
     const [taskDescription, setDescription] = React.useState('');
-    const [taskDueDate, setDueDate] = React.useState(null);
+    const [taskDueDate, setDueDate] = React.useState('');
     const [taskPriority, setPriority] = React.useState("normal");
 
     return (
