@@ -13,11 +13,11 @@ function NewItem() {
         console.log(event.target);
         console.log("Hi!");
         const data = {
-            title: taskTitle,
-            description: taskDescription,
-            due: taskDueDate,
+            title: event.target.title,
+            description: event.target.description,
+            due: event.target.date,
             isComplete: false,
-            priority: taskPriority
+            priority: event.target.priority
         };
 
         fetch('/api/todos', {
@@ -52,8 +52,8 @@ function NewItem() {
 }
 
 function NewItemPane(props) {
-    const [taskTitle, setTitle] = React.useState();
-    const [taskDescription, setDescription] = React.useState();
+    const [taskTitle, setTitle] = React.useState('');
+    const [taskDescription, setDescription] = React.useState('');
     const [taskDueDate, setDueDate] = React.useState();
     const [taskPriority, setPriority] = React.useState("normal");
 
