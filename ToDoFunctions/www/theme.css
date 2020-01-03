@@ -1,0 +1,27 @@
+:root {
+    /* https://www.viget.com/articles/tints-tones-shades/ */
+    /* https://www.w3schools.com/w3css/w3css_color_themes.asp -- Orange theme*/
+    --theme-lightest:   #fff9f0;
+    --theme-lighter:    #ffd699;
+    --theme-main:       #ffad33;
+    --theme-darker:     #cc7a00;
+    --theme-darkest:    #995c00;
+    
+    --theme-lightest-alt: #ffebcc;
+    --theme-lighter-alt: #ffc266;
+    --theme-main-alt: #e68a00;
+    --theme-darker-alt: #b36b00;
+    --theme-darkest-alt:#804d00;
+
+    --theme-light: var(--theme-lightest);
+    --theme-dark: var(--theme-darkest);
+    --theme-action: var(--theme-darkest);
+
+    --theme-color: #ff9800;
+    --theme-text-color: var(--theme-color);
+    --theme-border-color: var(--theme-color);
+
+    --theme-hover-color: var(--theme-color);
+    --theme-hover-text-color: var(--theme-color);
+    --theme-hover-border-color: var(--theme-color);
+}

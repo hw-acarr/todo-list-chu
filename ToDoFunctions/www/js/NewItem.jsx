@@ -8,9 +8,40 @@ function NewItem() {
         setDisplayNewItemPane(false);
     }
 
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        console.log(event.target);
+        console.log("Hi!");
+        const data = {
+            title: taskTitle,
+            description: taskDescription,
+            due: taskDueDate,
+            isComplete: false,
+            priority: taskPriority
+        };
+
+        fetch('/api/todos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data);
+            })
+            .then(() => {
+                closeNewActionPane();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
     if (displayNewItemPane) {
         return (
-            <NewItemPane closeAction={closeNewActionPane} />
+            <NewItemPane submitAction={handleFormSubmit} closeAction={closeNewActionPane} />
         );
     } else {
         return (
@@ -25,37 +56,6 @@ function NewItemPane(props) {
     const [taskDescription, setDescription] = React.useState();
     const [taskDueDate, setDueDate] = React.useState();
     const [taskPriority, setPriority] = React.useState("normal");
-    const [closePane, setClosePane] = React.useState(props.closeAction);
-
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-
-        const data = {
-            title: taskTitle,
-            description: taskDescription,
-            due: taskDueDate,
-            isComplete: false,
-            priority: taskPriority
-        };
-
-        fetch('/api/todos', {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log('Success:', data);
-            })
-            .then(() => {
-                closePane();
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-    }
 
     return (
         <div className="new-item-pane">
