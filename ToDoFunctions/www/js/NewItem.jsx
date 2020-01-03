@@ -1,8 +1,8 @@
 function NewItem() {
     const [displayNewItemPane, setDisplayNewItemPane] = React.useState(false);
-    // var newAction = () => {
-    //     setDisplayNewItemPane(true);
-    // }
+    var setNewItemPaneVisible = (visible) => {
+        setDisplayNewItemPane(visible);
+    }
 
     // var closeNewActionPane = () => {
     //     setDisplayNewItemPane(false);
@@ -40,11 +40,11 @@ function NewItem() {
 
     if (displayNewItemPane) {
         return (
-            <NewItemPane submitAction={handleFormSubmit} closeAction={setDisplayNewItemPane} />
+            <NewItemPane submitAction={handleFormSubmit} closeAction={setNewItemPaneVisible} />
         );
     } else {
         return (
-            <input type="button" className="btn btn-default" onClick={setDisplayNewItemPane(true)} value="Add A New To Do Item" />
+            <input type="button" className="btn btn-default" onClick={() => setNewItemPaneVisible(true)} value="Add A New To Do Item" />
         );
     }
 
