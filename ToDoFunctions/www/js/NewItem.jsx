@@ -56,7 +56,7 @@ function NewItem() {
 function NewItemPane(props) {
     const [taskTitle, setTitle] = React.useState('');
     const [taskDescription, setDescription] = React.useState('');
-    const [taskDueDate, setDueDate] = React.useState();
+    const [taskDueDate, setDueDate] = React.useState(null);
     const [taskPriority, setPriority] = React.useState("normal");
 
     return (
@@ -68,7 +68,7 @@ function NewItemPane(props) {
                 <form id="new-item" onSubmit={props.submitAction}>
                     <input id="title" name="Title" type="text" className="new-item-control" placeholder="Title" value={taskTitle} onChange={(event) => setTitle(event.target.value)} />
                     <br />
-                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" onChange={(event) => setDescription(event.target.value)}>{taskDescription}</textarea>
+                    <textarea name="Description" id="description" className="new-item-control" rows="4" columns="40" value={taskDescription} onChange={(event) => setDescription(event.target.value)}></textarea>
                     <br />
                     <input type="date" id="date" name="Due Date" value={taskDueDate} onChange={(event) => setDueDate(event.target.value)} />
                     <br />
