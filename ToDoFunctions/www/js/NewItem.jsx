@@ -11,6 +11,8 @@ function NewItem() {
     const handleFormSubmit = (event) => {
         event.preventDefault();
         console.log(event.target);
+        console.log(event.target.title.name);
+        console.log(event.target.title.value);
         console.log("Hi!");
         const data = {
             title: event.target.title,
