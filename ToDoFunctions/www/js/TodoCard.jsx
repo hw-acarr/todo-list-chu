@@ -128,7 +128,7 @@ function TodoCardList(props) {
 
     return (
         <div className="task-list">
-            {hasLoaded && props.getItems.map((item, index) => (
+            {hasLoaded && props.getItems().map((item, index) => (
                 <BasicCard key={item.id} item={item} removeFunction={removeItem} />
             ))}
         </div>
