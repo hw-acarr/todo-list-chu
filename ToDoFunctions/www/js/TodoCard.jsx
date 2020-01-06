@@ -129,6 +129,7 @@ function TodoCardList(props) {
     return (
         <div className="task-list">
             console.log(props.getItems());
+            console.log(typeof props.getItems());
             {hasLoaded && props.getItems().map((item, index) => (
                 <BasicCard key={item.id} item={item} removeFunction={removeItem} />
             ))}
