@@ -76,7 +76,7 @@ function NewItemPane(props) {
                         <option value="low">Low</option>
                     </select>
                     <button type="submit" className="new-item-control"> Add</button>
-                    <button type="button" className="new-item-control" onClick={props.closeAction()}>Cancel</button>
+                    <button type="button" className="new-item-control" onClick={props.closeAction}>Cancel</button>
                 </form>
             </div>
         </div>
