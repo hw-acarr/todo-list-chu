@@ -10,6 +10,8 @@ function App() {
     };
 
     const getItems = () => {
+        console.log("ITEMS");
+        console.log(typeof items);
         return items;
     };
 
