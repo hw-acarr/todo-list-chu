@@ -1,5 +1,6 @@
-function NewItem() {
+function NewItem(props) {
     const [displayNewItemPane, setDisplayNewItemPane] = React.useState(false);
+
     var showNewItemPane = () => {
         setDisplayNewItemPane(true);
     }
@@ -29,7 +30,7 @@ function NewItem() {
             .then((response) => response.json())
             .then((data) => {
                 console.log('Success:', data);
-                return data;
+                props.addItems(data);
             })
             .then(() => {
                 hideNewItemPane();

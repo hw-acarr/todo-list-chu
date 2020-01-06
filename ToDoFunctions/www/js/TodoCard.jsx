@@ -106,14 +106,13 @@ function BasicTaskActions(props) {
     );
 }
 
-function TodoCardList() {
-    const [items, setItems] = React.useState([]);
+function TodoCardList(props) {
     const [hasLoaded, setLoadedStatus] = React.useState(false);
 
     var removeItem = (key) => {
-        let filtered = items.filter(item => item.id !== key);
+        let filtered = props.getItems.filter(item => item.id !== key);
         console.log(filtered);
-        setItems(filtered);
+        props.replaceItems(filtered);
     }
 
     React.useEffect(() => {
@@ -121,7 +120,7 @@ function TodoCardList() {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                setItems(data);
+                props.addItems(data);
                 setLoadedStatus(true);
             })
             .catch(error => console.log(error));
@@ -129,7 +128,7 @@ function TodoCardList() {
 
     return (
         <div className="task-list">
-            {hasLoaded && items.map((item, index) => (
+            {hasLoaded && props.getItems.map((item, index) => (
                 <BasicCard key={item.id} item={item} removeFunction={removeItem} />
             ))}
         </div>
