@@ -2,7 +2,7 @@ function App() {
     const [items, setItems] = React.useState([]);
 
     const addItems = (newItems) => {
-        setItems(...items, ...newItems);
+        setItems(Array.of(...items, ...newItems));
     };
 
     const replaceItems = (items) => {
