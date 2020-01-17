@@ -71,7 +71,7 @@ function TaskDueDate(props) {
 
 async function patchData(url = '', id = '') {
     var endpoint = url + id;
-    console.log(endpoint);
+
     const response = await fetch(endpoint, {
         method: 'PATCH',
         headers: {
@@ -91,7 +91,6 @@ function BasicTaskActions(props) {
     var completeAction = (id, remove) => {
         try {
             const data = patchData('/api/todos/', id);
-            console.log(JSON.stringify(data));
             remove(id);
         } catch (error) {
             console.error(error);
@@ -111,7 +110,6 @@ function TodoCardList(props) {
 
     var removeItem = (key) => {
         let filtered = props.getItems.filter(item => item.id !== key);
-        console.log(filtered);
         props.replaceItems(filtered);
     }
 
@@ -125,9 +123,6 @@ function TodoCardList(props) {
             })
             .catch(error => console.log(error));
     }, []);
-
-    console.log(typeof props.getItems());
-    console.log(props.getItems());
 
     return (
         <div className="task-list">

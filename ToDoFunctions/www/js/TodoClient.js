@@ -1,7 +1,6 @@
 ﻿(function () {
     var TodoClient = function (baseUrl) {
         this.baseUrl = baseUrl || '';
-        console.log("BASE URL: " + this.baseUrl);
     };
 
     TodoClient.prototype.get = function (id, callback) {
@@ -20,7 +19,7 @@
 
     TodoClient.prototype.getList = function (includeCompleted, includeActive, callback) {
         var xhr = new XMLHttpRequest();
-        console.log("Getting: " + this.baseUrl + '/api/todos?includecompleted=' + (includeCompleted === true) + '&includeactive=' + (includeActive === true));
+
         xhr.open('GET', this.baseUrl + '/api/todos?includecompleted=' + (includeCompleted === true) + '&includeactive=' + (includeActive === true));
         xhr.onload = function () {
             if (xhr.status === 200) {

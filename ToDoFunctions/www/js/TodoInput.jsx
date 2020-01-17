@@ -10,11 +10,9 @@ class TodoInput extends React.Component {
         await fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then((data) => {
-                console.log(data);
                 this.setState({ items: data });
             })
             .catch(console.log)
-        console.log(this.state.items);
     }
 
     render() {
