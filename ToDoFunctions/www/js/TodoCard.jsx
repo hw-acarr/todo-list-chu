@@ -63,8 +63,19 @@ function Priority(props) {
     );
 }
 
+// Render the due date
+// 
+/*
+    TODO:
+      * Update the format so the due date reads:
+        - 'Today' if the due date is today
+        - 'Tomorrow' if the due date is tomorrow
+        - '<Weekday>' if the due date is within 6 days (e.g if today is Friday and the due date is next friday, not then.)
+        - 'MON DAY' (MAR 31)
+        - 'MON DAY YEAR' (MAR 31 2021)
+*/
 function TaskDueDate(props) {
-    var dueby = Date.parse(props.due);
+    var dueby = new Date(props.due);
 
     return (
         <div className="task-duedate">Due Date: {dueby.toDateString()}</div>
