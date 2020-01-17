@@ -64,8 +64,10 @@ function Priority(props) {
 }
 
 function TaskDueDate(props) {
+    var dueby = Date.parse(props.due);
+
     return (
-        <div className="task-duedate">Due Date: {props.due}</div>
+        <div className="task-duedate">Due Date: {dueby.toDateString()}</div>
     );
 }
 
@@ -117,7 +119,6 @@ function TodoCardList(props) {
         fetch('/api/todos?includecompleted=false&includeactive=true')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 props.addItems(data);
                 setLoadedStatus(true);
             })
