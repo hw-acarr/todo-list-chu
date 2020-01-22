@@ -72,7 +72,7 @@ function formatDate(date) {
         console.log("    > current.getDate() == " + current.getDate());
         if (current.getDate() == date.getDate()) {
             return "Today";
-        } else if (current.getDate() == addDays(date, 1)) {
+        } else if ((current.getDate() + 1) == date.getDate()) {
             return "Tomorrow";
         }
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
