@@ -75,14 +75,13 @@ function formatDate(date) {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getDay()];
     } else {
-        const format = { month: 'long', day: 'numeric', year: 'numeric' };
-        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        console.log(date.toLocaleDateString('en-us', format));
-        if (current.getFullYear() == date.getFullYear()) {
-            return months[date.getMonth()] + " " + date.getDate();
-        } else {
-            return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+        const format = { month: 'short', day: 'numeric' };
+
+        if (current.getFullYear() != date.getFullYear()) {
+            format.year = 'numeric';
         }
+
+        return date.toLocaleDateString('en-us', format);
     }
 
     return "FORMATTED";
