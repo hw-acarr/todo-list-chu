@@ -67,6 +67,9 @@ function Priority(props) {
 function formatDate(date) {
     let current = new Date();
     if (dateWithinTheWeek(date)) {
+        console.log("    > Within the week");
+        console.log("    > date.getDate()    == " + date.getDate());
+        console.log("    > current.getDate() == " + current.getDate());
         if (current.getDate() == date.getDate()) {
             return "Today";
         } else if (current.getDate() == addDays(date, 1)) {
@@ -75,8 +78,10 @@ function formatDate(date) {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getDay()];
     } else {
+        console.log("    > Outside of the current week");
         const format = { month: 'short', day: 'numeric' };
 
+        // Only add the year if it's not this year.
         if (current.getFullYear() != date.getFullYear()) {
             format.year = 'numeric';
         }
