@@ -114,6 +114,8 @@ function TaskDueDate(props) {
         var dueby = "";
     } else {
         var dueby = formatDate(new Date(props.due));
+        console.log("props.due<" + props.due + ">");
+        console.log("formatted<" + dueby + ">");
     }
 
     return (
