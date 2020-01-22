@@ -65,17 +65,18 @@ function Priority(props) {
 
 
 function formatDate(date) {
+    let current = new Date();
     if (dateWithinTheWeek(date)) {
-        if (Date.now().getDate() == date.getDate()) {
+        if (current.getDate() == date.getDate()) {
             return "Today";
-        } else if (Date.now().getDate() == addDays(date, 1)) {
+        } else if (current.getDate() == addDays(date, 1)) {
             return "Tomorrow";
         }
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getDay()];
     } else {
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        if (Date.now().getFullYear() == date.getFullYear()) {
+        if (current.getFullYear() == date.getFullYear()) {
             return months[date.getMonth()] + " " + date.getDate();
         } else {
             return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
