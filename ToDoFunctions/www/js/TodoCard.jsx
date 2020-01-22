@@ -98,11 +98,15 @@ function dateWithinTheWeek(date) {
         - 'MON DAY YEAR' (MAR 31 2021)
 */
 function TaskDueDate(props) {
-    console.log(props.due);
-    var dueby = new Date(props.due);
+    if (props.due == null) {
+        var dueby = "";
+    } else {
+        var dueby = new Date(props.due);
+        dueby = dueby.toDateString();
+    }
 
     return (
-        <div className="task-duedate">Due Date: {dueby.toDateString()}</div>
+        <div className="task-duedate">Due Date: {dueby}</div>
     );
 }
 
