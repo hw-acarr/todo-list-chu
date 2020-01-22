@@ -94,8 +94,9 @@ function addDays(date, days) {
 
 function dateWithinTheWeek(date) {
     let week = new Date();
+    let today = new Date();
     week.setDate(week.getDate() + 7);
-    return date < week;
+    return date >= today && date < week;
 }
 
 // Render the due date
