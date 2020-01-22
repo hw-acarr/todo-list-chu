@@ -75,7 +75,9 @@ function formatDate(date) {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getDay()];
     } else {
+        const format = { month: 'long', day: 'numeric', year: 'numeric' };
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        console.log(date.toLocaleDateString('en-us', format));
         if (current.getFullYear() == date.getFullYear()) {
             return months[date.getMonth()] + " " + date.getDate();
         } else {
@@ -92,10 +94,19 @@ function addDays(date, days) {
     return result;
 }
 
+/*
+    Determine if the provided date is occuring in the next 7 days.
+    TODO:
+        - if (proposed date - 7) >= today, return true
+*/
 function dateWithinTheWeek(date) {
     let week = new Date();
     let today = new Date();
+
+    // Advance the date 7 days to encompass the week
     week.setDate(week.getDate() + 7);
+
+    // If the date is today or within the next 7 days, return true
     return date >= today && date < week;
 }
 
