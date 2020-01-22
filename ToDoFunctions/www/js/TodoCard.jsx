@@ -66,9 +66,20 @@ function Priority(props) {
 
 function formatDate(date) {
     if (dateWithinTheWeek(date)) {
-        // Change to 'Today', 'Tomorrow', or '<Weekday>', as approporiate
+        if (Date.now().getDate() == date.getDate()) {
+            return "Today";
+        } else if (Date.now().getDate() == addDays(date, 1)) {
+            return "Tomorrow";
+        }
+        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        return days[date.getDay()];
     } else {
-        // Change to `MON DAY` or `MON DAY YEAR`, as approporiate
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        if (Date.now().getFullYear() == date.getFullYear()) {
+            return months[date.getMonth()] + " " + date.getDate();
+        } else {
+            return months[date.getMonth()] + " " + date.getDate() + ", " + date.getFullYear();
+        }
     }
 
     return "FORMATTED";
@@ -101,12 +112,11 @@ function TaskDueDate(props) {
     if (props.due == null) {
         var dueby = "";
     } else {
-        var dueby = new Date(props.due);
-        dueby = dueby.toDateString();
+        var dueby = formatDate(new Date(props.due));
     }
 
     return (
-        <div className="task-duedate">Due Date: {dueby}</div>
+        <div className="task-duedate">{dueby}</div>
     );
 }
 
