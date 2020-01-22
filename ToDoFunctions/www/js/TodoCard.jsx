@@ -66,6 +66,7 @@ function Priority(props) {
 
 function formatDate(date) {
     let current = new Date();
+    console.log("Date.getDate()    == " + date.getDate());
     if (dateWithinTheWeek(date)) {
         console.log("    > Within the week");
         console.log("    > date.getDate()    == " + date.getDate());
