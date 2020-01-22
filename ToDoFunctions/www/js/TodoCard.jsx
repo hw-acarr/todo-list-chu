@@ -63,6 +63,29 @@ function Priority(props) {
     );
 }
 
+
+function formatDate(date) {
+    if (dateWithinTheWeek(date)) {
+        // Change to 'Today', 'Tomorrow', or '<Weekday>', as approporiate
+    } else {
+        // Change to `MON DAY` or `MON DAY YEAR`, as approporiate
+    }
+
+    return "FORMATTED";
+}
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
+function dateWithinTheWeek(date) {
+    let week = new Date();
+    week.setDate(week.getDate() + 7);
+    return date < week;
+}
+
 // Render the due date
 // 
 /*
@@ -75,6 +98,7 @@ function Priority(props) {
         - 'MON DAY YEAR' (MAR 31 2021)
 */
 function TaskDueDate(props) {
+    console.log(props.due);
     var dueby = new Date(props.due);
 
     return (
