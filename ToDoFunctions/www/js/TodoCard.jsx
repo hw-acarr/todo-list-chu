@@ -66,18 +66,18 @@ function Priority(props) {
 
 function formatDate(date) {
     let current = new Date();
-    console.log("Date.getDate()    == " + date.getDate());
+    console.log("Date.getDate()    == " + date.getUTCDate());
     if (dateWithinTheWeek(date)) {
         console.log("    > Within the week");
-        console.log("    > date.getDate()    == " + date.getDate());
-        console.log("    > current.getDate() == " + current.getDate());
-        if (current.getDate() == date.getDate()) {
+        console.log("    > date.getDate()    == " + date.getUTCDate());
+        console.log("    > current.getDate() == " + current.getUTCDate());
+        if (current.getUTCDate() == date.getUTCDate()) {
             return "Today";
-        } else if ((current.getDate() + 1) == date.getDate()) {
+        } else if ((current.getUTCDate() + 1) == date.getUTCDate()) {
             return "Tomorrow";
         }
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        return days[date.getDay()];
+        return days[date.getUTCDay()];
     } else {
         console.log("    > Outside of the current week");
         const format = { month: 'short', day: 'numeric' };
@@ -95,7 +95,7 @@ function formatDate(date) {
 
 function addDays(date, days) {
     var result = new Date(date);
-    result.setDate(result.getDate() + days);
+    result.setUTCDate(result.getUTCDate() + days);
     return result;
 }
 
@@ -109,7 +109,7 @@ function dateWithinTheWeek(date) {
     let today = new Date();
 
     // Advance the date 7 days to encompass the week
-    week.setDate(week.getDate() + 7);
+    week.setUTCDate(week.getUTCDate() + 7);
 
     // If the date is today or within the next 7 days, return true
     return date >= today && date < week;
