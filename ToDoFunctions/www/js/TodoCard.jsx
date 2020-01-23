@@ -111,6 +111,7 @@ function dateWithinTheWeek(date) {
     // Advance the date 7 days to encompass the week
     week.setUTCDate(week.getUTCDate() + 7);
 
+    console.log("Checking that <" + date.getUTCDate() + "> >= <" + today.getUTCDate() + "> && <" + date.getUTCDate() + "> < <" + week.getUTCDate() + ">");
     // If the date is today or within the next 7 days, return true
     return date >= today && date < week;
 }
