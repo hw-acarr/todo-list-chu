@@ -65,12 +65,9 @@ function Priority(props) {
 
 
 function formatDate(date) {
-    let current = new Date();
-    console.log("Date.getDate()    == " + date.getUTCDate());
+    let current = getNewDate();
+
     if (dateWithinTheWeek(date)) {
-        console.log("    > Within the week");
-        console.log("    > date.getDate()    == " + date.getUTCDate());
-        console.log("    > current.getDate() == " + current.getUTCDate());
         if (current.getUTCDate() == date.getUTCDate()) {
             return "Today";
         } else if ((current.getUTCDate() + 1) == date.getUTCDate()) {
@@ -79,7 +76,6 @@ function formatDate(date) {
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getUTCDay()];
     } else {
-        console.log("    > Outside of the current week");
         const format = { month: 'short', day: 'numeric' };
 
         // Only add the year if it's not this year.
@@ -91,12 +87,6 @@ function formatDate(date) {
     }
 
     return "FORMATTED";
-}
-
-function addDays(date, days) {
-    var result = new Date(date);
-    result.setUTCDate(result.getUTCDate() + days);
-    return result;
 }
 
 /*
@@ -111,11 +101,14 @@ function dateWithinTheWeek(date) {
     // Advance the date 7 days to encompass the week
     week.setUTCDate(week.getUTCDate() + 7);
 
-    console.log("Checking that <" + date + "> >= <" + today + "> && <" + date + "> < <" + week + ">");
+    //console.log("Checking that <" + date + "> >= <" + today + "> && <" + date + "> < <" + week + ">");
     // If the date is today or within the next 7 days, return true
     return date >= today && date < week;
 }
 
+/*
+    Returns the current date with the time zero'ed out.
+*/
 function getNewDate() {
     let current = new Date();
     current.setUTCHours(0, 0, 0, 0);
