@@ -133,6 +133,7 @@ function TaskDueDate(props) {
     } else {
         var dueby = formatDate(new Date(props.due));
         console.log("props.due<" + props.due + ">");
+        console.log("new Date<" + new Date(props.due) + ">")
         console.log("formatted<" + dueby + ">");
     }
 
