@@ -105,8 +105,8 @@ function addDays(date, days) {
         - if (proposed date - 7) >= today, return true
 */
 function dateWithinTheWeek(date) {
-    let week = new Date();
-    let today = new Date();
+    let week = getNewDate();
+    let today = getNewDate();
 
     // Advance the date 7 days to encompass the week
     week.setUTCDate(week.getUTCDate() + 7);
@@ -114,6 +114,12 @@ function dateWithinTheWeek(date) {
     console.log("Checking that <" + date + "> >= <" + today + "> && <" + date + "> < <" + week + ">");
     // If the date is today or within the next 7 days, return true
     return date >= today && date < week;
+}
+
+function getNewDate() {
+    let current = new Date();
+    current.setUTCHours(0, 0, 0, 0);
+    return current;
 }
 
 // Render the due date
