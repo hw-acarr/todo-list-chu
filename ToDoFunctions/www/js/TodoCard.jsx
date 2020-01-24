@@ -37,7 +37,7 @@ function BasicTaskDescription(props) {
 
 function TaskInfo(props) {
 
-    if (props.description != null) {
+    if (props.description) {
         return (
             <div className="task-info">
                 <div className="task-title">{props.title}</div>
