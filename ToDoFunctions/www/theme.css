@@ -25,3 +25,22 @@
     --theme-hover-text-color: var(--theme-color);
     --theme-hover-border-color: var(--theme-color);
 }
+
+pre.code {
+font-family: "Courier New","Courier",monospace;
+background-color: #e0e0e0;
+font-size: 0.8em;
+border: 1px solid #AAA;
+border-color: #000;
+text-align: left;
+min-width: 80%;
+display: inline-block;
+margin: 0.4em;
+margin-bottom: 1em;
+padding: 1em;
+color: black;
+-moz-box-shadow: 4px 4px 10px #AAA;
+-webkit-box-shadow: 4px 4px 10px #AAA;
+box-shadow: 4px 4px 6px #AAA;
+white-space: pre;
+}
