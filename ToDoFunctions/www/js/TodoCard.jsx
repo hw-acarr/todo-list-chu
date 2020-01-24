@@ -75,18 +75,16 @@ function formatDate(date) {
         }
         const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         return days[date.getUTCDay()];
-    } else {
-        const format = { month: 'short', day: 'numeric' };
-
-        // Only add the year if it's not this year.
-        if (current.getFullYear() != date.getFullYear()) {
-            format.year = 'numeric';
-        }
-
-        return date.toLocaleDateString('en-us', format);
     }
 
-    return "FORMATTED";
+    const format = { month: 'short', day: 'numeric' };
+
+    // Only add the year if it's not this year.
+    if (current.getFullYear() != date.getFullYear()) {
+        format.year = 'numeric';
+    }
+
+    return date.toLocaleDateString('en-us', format);
 }
 
 /*
@@ -117,23 +115,11 @@ function getNewDate() {
 
 // Render the due date
 // 
-/*
-    TODO:
-      * Update the format so the due date reads:
-        - 'Today' if the due date is today
-        - 'Tomorrow' if the due date is tomorrow
-        - '<Weekday>' if the due date is within 6 days (e.g if today is Friday and the due date is next friday, not then.)
-        - 'MON DAY' (MAR 31)
-        - 'MON DAY YEAR' (MAR 31 2021)
-*/
 function TaskDueDate(props) {
-    if (props.due == null) {
-        var dueby = "";
-    } else {
-        var dueby = formatDate(new Date(props.due));
-        console.log("props.due<" + props.due + ">");
-        console.log("new Date<" + new Date(props.due) + ">")
-        console.log("formatted<" + dueby + ">");
+    var dueby = "";
+
+    if (props.due != null) {
+        dueby = formatDate(new Date(props.due));
     }
 
     return (
