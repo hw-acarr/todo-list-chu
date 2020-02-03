@@ -1,3 +1,7 @@
+.task-app {
+    max-width:          74%;
+}
+
 .task-list {
     max-width:          66%;
 }
@@ -8,6 +12,7 @@
 }
 
 .task-info {
+    padding:            10px;
     display:            flex;
     flex-direction:     column;
     flex-grow: 1;
@@ -19,8 +24,7 @@
 
 .title-header {
     border-bottom:      1px solid #b5d5ff;
-    padding-bottom:     5px;
-    height:             15px;
+    margin-bottom:      10px;
 }
 
 .task-title {

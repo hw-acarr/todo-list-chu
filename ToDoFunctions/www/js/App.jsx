@@ -17,7 +17,7 @@ function App() {
     };
 
     return (
-        <div>
+        <div className="task-app">
             <TitleBar />
             <NewItem addItems={addItems} />
             <TodoCardList addItems={addItems} getItems={getItems} replaceItems={replaceItems} />
