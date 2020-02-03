@@ -22,13 +22,13 @@ function BasicTaskDescription(props) {
     */
     return (
         <div className="task">
-            <div className="task-button">
+            <div className="task-element">
                 <button name="modify" type="button">Modify</button>
             </div>
             <Priority priority={props.item.priority} />
             <TaskInfo title={props.item.title} description={props.item.description} />
             <TaskDueDate due={props.item.due} />
-            <div className="task-button">
+            <div className="task-element">
                 <button name="complete" type="button">Complete</button>
             </div>
         </div>
@@ -68,7 +68,9 @@ function Priority(props) {
     }
 
     return (
-        <img src={image} height="32" width="32" />
+        <div className="task-element">
+            <img src={image} height="32" width="32" />
+        </div>
     );
 }
 
