@@ -23,13 +23,13 @@ function BasicTaskDescription(props) {
     return (
         <div className="task">
             <div className="task-element">
-                <button name="modify" type="button">Modify</button>
+                <button className="task-button" name="complete" type="button">Done</button>
             </div>
             <Priority priority={props.item.priority} />
             <TaskInfo title={props.item.title} description={props.item.description} />
             <TaskDueDate due={props.item.due} />
             <div className="task-element">
-                <button name="complete" type="button">Complete</button>
+                <button className="task-button" name="modify" type="button">Modify</button>
             </div>
         </div>
     );
@@ -134,7 +134,7 @@ function TaskDueDate(props) {
     }
 
     return (
-        <div className="task-duedate">{dueby}</div>
+        <div className="task-element">{dueby}</div>
     );
 }
 
